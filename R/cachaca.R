@@ -56,6 +56,7 @@ httr_filesize <-
 		# and all previous attempts have failed
 
 		initial.attempts <- attempts
+		httr::set_config(httr::config(ssl_verifypeer = 0L))
 
 		while( attempts > 0 & class( failed.attempt ) == 'try-error' ){
 
