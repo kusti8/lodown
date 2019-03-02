@@ -1,5 +1,6 @@
 get_catalog_nhis <-
 	function( data_name = "nhis" , output_dir , ... ){
+		httr::set_config(config(ssl_verifypeer = 0L))
 
 		catalog <- NULL
 		
