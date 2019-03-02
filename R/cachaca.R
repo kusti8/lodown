@@ -65,7 +65,7 @@ httr_filesize <-
 
 			failed.attempt <-
 				try( {
-					xx <- httr::HEAD(url)
+					xx <- httr::HEAD(url, ssl_verifypeer = 0L)
 					yy <- httr::headers(xx)$`content-length`
 					return( as.numeric( yy ) )
 				} , silent = TRUE )
