@@ -28,6 +28,11 @@ read_SAScii <-
 			dat_path <- unzip_warn_fail( tf , exdir = paste0( tempdir() , "/unzips" ) , overwrite = TRUE )
 			if( length( dat_path ) != 1 ) stop( "zipped file does not contain exactly one file" )
 		}
+		tf <- tempfile()			
+		library(httr)
+			httr::set_config(config(ssl_verifypeer = 0L))
+			GET(dat_path, write_disk(tf, overwrite=TRUE))
+		dat_path = tf
 		
 		# read in the fixed-width file..
 		x <-
