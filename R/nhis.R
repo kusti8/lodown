@@ -212,7 +212,8 @@ lodown_nhis <-
 		for ( i in seq_len( nrow( catalog ) ) ){
 
 			# download the file
-			writeBin(RCurl::getURL(catalog[ i , "full_url" ], ssl.verifypeer=FALSE), tf)
+			library(httr)
+			GET(catalog[ i , "full_url" ], write_disk(tf, overwrite=TRUE))
 
 			unzipped_files <- unzip_warn_fail( tf , exdir = paste0( tempdir() , "/unzips" ) )
 
