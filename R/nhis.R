@@ -213,6 +213,7 @@ lodown_nhis <-
 
 			# download the file
 			library(httr)
+			httr::set_config(config(ssl_verifypeer = 0L))
 			GET(catalog[ i , "full_url" ], write_disk(tf, overwrite=TRUE))
 
 			unzipped_files <- unzip_warn_fail( tf , exdir = paste0( tempdir() , "/unzips" ) )
